@@ -6,6 +6,7 @@ on:
 permissions:
   contents: read
   issues: write
+  security-events: write
 
 
 jobs:
@@ -19,6 +20,8 @@ jobs:
         uses: projectdiscovery/nuclei-action@main
         with:
           target: https://refactored-yodel-5gpx9vxv7jqfpx4p-3000.app.github.dev
+          github-report: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: GitHub Workflow artifacts
         uses: actions/upload-artifact@v4
